@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KS_DBModelStoreContainer" CdmEntityContainer="KS_DBEntities">
+    <EntitySetMapping Name="Ders">
+      <EntityTypeMapping TypeName="KS_DBModel.Ders">
+        <MappingFragment StoreEntitySet="Ders">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DersAdi" ColumnName="DersAdi" />
+          <ScalarProperty Name="DersGunu" ColumnName="DersGunu" />
+          <ScalarProperty Name="KursID" ColumnName="KursID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DersNotu">
+      <EntityTypeMapping TypeName="KS_DBModel.DersNotu">
+        <MappingFragment StoreEntitySet="DersNotu">
+          <ScalarProperty Name="DersID" ColumnName="DersID" />
+          <ScalarProperty Name="OgrenciID" ColumnName="OgrenciID" />
+          <ScalarProperty Name="DersNotu1" ColumnName="DersNotu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Egitmen">
+      <EntityTypeMapping TypeName="KS_DBModel.Egitmen">
+        <MappingFragment StoreEntitySet="Egitmen">
+          <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="TC" ColumnName="TC" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CepTelefonu" ColumnName="CepTelefonu" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EgitmenMaasi">
+      <EntityTypeMapping TypeName="KS_DBModel.EgitmenMaasi">
+        <MappingFragment StoreEntitySet="EgitmenMaasi">
+          <ScalarProperty Name="MaasID" ColumnName="MaasID" />
+          <ScalarProperty Name="EgitmenID" ColumnName="EgitmenID" />
+          <ScalarProperty Name="Maas" ColumnName="Maas" />
+          <ScalarProperty Name="Yil" ColumnName="Yil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanici">
+      <EntityTypeMapping TypeName="KS_DBModel.Kullanici">
+        <MappingFragment StoreEntitySet="Kullanici">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kurs">
+      <EntityTypeMapping TypeName="KS_DBModel.Kurs">
+        <MappingFragment StoreEntitySet="Kurs">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="KursAdi" ColumnName="KursAdi" />
+          <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
+          <ScalarProperty Name="KursKontenjani" ColumnName="KursKontenjani" />
+          <ScalarProperty Name="EgitmenID" ColumnName="EgitmenID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ogrenci">
+      <EntityTypeMapping TypeName="KS_DBModel.Ogrenci">
+        <MappingFragment StoreEntitySet="Ogrenci">
+          <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="TC" ColumnName="TC" />
+          <ScalarProperty Name="CepTelefonu" ColumnName="CepTelefonu" />
+          <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="KursID" ColumnName="KursID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yonetim">
+      <EntityTypeMapping TypeName="KS_DBModel.Yonetim">
+        <MappingFragment StoreEntitySet="Yonetim">
+          <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="TC" ColumnName="TC" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CepTelefonu" ColumnName="CepTelefonu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5816f35dd83e4e6388cb718d45da0160" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="KS_DBModel.Ders" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KS_DBModel.DersNotu" Width="1.5" PointX="9.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KS_DBModel.Egitmen" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KS_DBModel.EgitmenMaasi" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KS_DBModel.Kullanici" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KS_DBModel.Kurs" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="KS_DBModel.Ogrenci" Width="1.5" PointX="7.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KS_DBModel.Yonetim" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="KS_DBModel.FK_Ders_Kurs" ManuallyRouted="false" />
+        <AssociationConnector Association="KS_DBModel.FK_DersNotu_Ders" ManuallyRouted="false" />
+        <AssociationConnector Association="KS_DBModel.FK_DersNotu_Ogrenci" ManuallyRouted="false" />
+        <AssociationConnector Association="KS_DBModel.FK_Egitmen_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="KS_DBModel.FK_EgitmenMaasi_Egitmen" ManuallyRouted="false" />
+        <AssociationConnector Association="KS_DBModel.FK_Kurs_Egitmen" ManuallyRouted="false" />
+        <AssociationConnector Association="KS_DBModel.FK_Ogrenci_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="KS_DBModel.FK_Yonetim_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="KS_DBModel.FK_Ogrenci_Kurs" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

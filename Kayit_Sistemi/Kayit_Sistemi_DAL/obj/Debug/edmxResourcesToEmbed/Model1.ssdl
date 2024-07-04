@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KS_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ders">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DersAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DersGunu" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="KursID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DersNotu">
+    <Key>
+      <PropertyRef Name="DersID" />
+      <PropertyRef Name="OgrenciID" />
+    </Key>
+    <Property Name="DersID" Type="int" Nullable="false" />
+    <Property Name="OgrenciID" Type="int" Nullable="false" />
+    <Property Name="DersNotu" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Egitmen">
+    <Key>
+      <PropertyRef Name="KullaniciID" />
+    </Key>
+    <Property Name="KullaniciID" Type="int" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TC" Type="char" MaxLength="11" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CepTelefonu" Type="char" MaxLength="14" Nullable="false" />
+    <Property Name="Adres" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="DogumTarihi" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EgitmenMaasi">
+    <Key>
+      <PropertyRef Name="MaasID" />
+    </Key>
+    <Property Name="MaasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EgitmenID" Type="int" Nullable="false" />
+    <Property Name="Maas" Type="bigint" Nullable="false" />
+    <Property Name="Yil" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KullaniciAdi" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sifre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Rol" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kurs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KursAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BaslangicTarihi" Type="date" Nullable="false" />
+    <Property Name="KursKontenjani" Type="int" Nullable="false" />
+    <Property Name="EgitmenID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ogrenci">
+    <Key>
+      <PropertyRef Name="KullaniciID" />
+    </Key>
+    <Property Name="KullaniciID" Type="int" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TC" Type="char" MaxLength="11" Nullable="false" />
+    <Property Name="CepTelefonu" Type="char" MaxLength="14" Nullable="false" />
+    <Property Name="DogumTarihi" Type="date" Nullable="false" />
+    <Property Name="Adres" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="KursID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Yonetim">
+    <Key>
+      <PropertyRef Name="KullaniciID" />
+    </Key>
+    <Property Name="KullaniciID" Type="int" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TC" Type="char" MaxLength="11" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CepTelefonu" Type="char" MaxLength="14" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Ders_Kurs">
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="1" />
+    <End Role="Ders" Type="Self.Ders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurs">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ders">
+        <PropertyRef Name="KursID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DersNotu_Ders">
+    <End Role="Ders" Type="Self.Ders" Multiplicity="1" />
+    <End Role="DersNotu" Type="Self.DersNotu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ders">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DersNotu">
+        <PropertyRef Name="DersID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DersNotu_Ogrenci">
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="1" />
+    <End Role="DersNotu" Type="Self.DersNotu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ogrenci">
+        <PropertyRef Name="KullaniciID" />
+      </Principal>
+      <Dependent Role="DersNotu">
+        <PropertyRef Name="OgrenciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Egitmen_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Egitmen" Type="Self.Egitmen" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Egitmen">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EgitmenMaasi_Egitmen">
+    <End Role="Egitmen" Type="Self.Egitmen" Multiplicity="1" />
+    <End Role="EgitmenMaasi" Type="Self.EgitmenMaasi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Egitmen">
+        <PropertyRef Name="KullaniciID" />
+      </Principal>
+      <Dependent Role="EgitmenMaasi">
+        <PropertyRef Name="EgitmenID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kurs_Egitmen">
+    <End Role="Egitmen" Type="Self.Egitmen" Multiplicity="1" />
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Egitmen">
+        <PropertyRef Name="KullaniciID" />
+      </Principal>
+      <Dependent Role="Kurs">
+        <PropertyRef Name="EgitmenID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ogrenci_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ogrenci">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ogrenci_Kurs">
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="1" />
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurs">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ogrenci">
+        <PropertyRef Name="KursID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yonetim_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Yonetim" Type="Self.Yonetim" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Yonetim">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KS_DBModelStoreContainer">
+    <EntitySet Name="Ders" EntityType="Self.Ders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DersNotu" EntityType="Self.DersNotu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Egitmen" EntityType="Self.Egitmen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EgitmenMaasi" EntityType="Self.EgitmenMaasi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kurs" EntityType="Self.Kurs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yonetim" EntityType="Self.Yonetim" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Ders_Kurs" Association="Self.FK_Ders_Kurs">
+      <End Role="Kurs" EntitySet="Kurs" />
+      <End Role="Ders" EntitySet="Ders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DersNotu_Ders" Association="Self.FK_DersNotu_Ders">
+      <End Role="Ders" EntitySet="Ders" />
+      <End Role="DersNotu" EntitySet="DersNotu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DersNotu_Ogrenci" Association="Self.FK_DersNotu_Ogrenci">
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+      <End Role="DersNotu" EntitySet="DersNotu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Egitmen_Kullanici" Association="Self.FK_Egitmen_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Egitmen" EntitySet="Egitmen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EgitmenMaasi_Egitmen" Association="Self.FK_EgitmenMaasi_Egitmen">
+      <End Role="Egitmen" EntitySet="Egitmen" />
+      <End Role="EgitmenMaasi" EntitySet="EgitmenMaasi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kurs_Egitmen" Association="Self.FK_Kurs_Egitmen">
+      <End Role="Egitmen" EntitySet="Egitmen" />
+      <End Role="Kurs" EntitySet="Kurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ogrenci_Kullanici" Association="Self.FK_Ogrenci_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ogrenci_Kurs" Association="Self.FK_Ogrenci_Kurs">
+      <End Role="Kurs" EntitySet="Kurs" />
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yonetim_Kullanici" Association="Self.FK_Yonetim_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Yonetim" EntitySet="Yonetim" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
